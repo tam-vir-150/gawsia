@@ -5,7 +5,7 @@ export default function Example({title, items}) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <MenuButton className="inline-flex w-full justify-center gap-x-1.5 bg-white">
+        <MenuButton className="inline-flex w-full justify-center gap-x-1.5 bg-white hover:underline hover:underline-offset-4 duration-200">
           {title}
           <ChevronDownIcon aria-hidden="true" className="-mr-1 h-5 w-5 text-gray-400" />
         </MenuButton>
