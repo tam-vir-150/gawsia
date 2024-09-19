@@ -8,7 +8,7 @@ export default function Home() {
                 Our Services
             </h1>
             <br />
-            <p className=" text-gray-800 text-xl text-center">
+            <p className=" text-gray-800 text-xl text-justify">
             With the passage of time, as the world is moving forward, the demand for quality products is also increasing in the market. We at Gawsia International Trade have been working for more than 6 years to fulfill the needs of the customers for these quality products. Generally, we provide all kinds of knitting equipment (example: needle, sinker, marker, needle oil), lift, generator, and IT solution service.
             </p>
             <br />

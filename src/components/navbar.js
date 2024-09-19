@@ -11,8 +11,8 @@ export default function Home() {
     const products = ["Single Jersey Machines", "Double Jersey Machines", "Electronic Jacquard Machines"]
 
   return (
-    <nav className="w-screen p-4 flex justify-between items-center">
-      <Image className="ml-10" src={"/logo.png"} width={100} height={120} />
+    <nav className="w-screen p-4 flex justify-around items-center">
+      <Image className="ml-0" src={"/logo.png"} width={120} height={120} />
       <ul className="flex gap-10 text-gray-600 mr-10">
         <li className="hover:scale-110 hover:underline hover:underline-offset-4 duration-200">
           <a href="#" >Home</a>
