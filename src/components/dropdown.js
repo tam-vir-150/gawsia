@@ -6,12 +6,12 @@ export default function Dropdown({ title, items }) {
 
   return (
     <div
-      className="relative inline-block text-left uppercase duration-200"
+      className="relative inline-block text-left uppercase"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
       {/* Dropdown Button */}
-      <div className="inline-flex w-full justify-center gap-x-1.5 hover:underline hover:underline-offset-4 duration-200 uppercase">
+      <div className="inline-flex w-full justify-center gap-x-1.5 hover:underline hover:underline-offset-4 uppercase cursor-pointer">
         {title}
         <ChevronDownIcon aria-hidden="true" className="-mr-1 h-5 w-5 text-gray-400" />
       </div>

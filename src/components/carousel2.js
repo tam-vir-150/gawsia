@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [index, setIndex] = useState(0);
-  const urls = ["/mv.jpg", "/2.jpg", "/3.jpg"];  // Ensure these are in the /public folder
+  const urls = ["/1a.jpg", "/2a.jpg", "/3a.jpg"];  // Ensure these are in the /public folder
 
   const points = [
     {
@@ -25,7 +25,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % points.length);
-    }, 8000); // Change every 5 seconds
+    }, 10000); // Change every 5 seconds
     return () => clearInterval(interval);
   }, []);
 
@@ -38,7 +38,7 @@ export default function Home() {
         backgroundSize: "cover",
         backgroundAttachment: "fixed",
         width: "100%",
-        height: "100%",
+        height: "100vh",
       }}
     >
       <div className="bg-[rgba(0,0,0,0.8)] p-6 w-full h-full flex flex-col justify-center items-center">
