@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <nav className="w-screen p-4 flex justify-around items-center">
       <Image className="ml-0" src={"/logo.png"} width={120} height={120} />
-      <ul className="flex gap-10 text-gray-600 mr-10">
+      <ul className="flex gap-10 text-gray-600 mr-10 uppercase">
         <li className="hover:text-black hover:underline hover:underline-offset-4 duration-200">
           <a href="#" >Home</a>
         </li>

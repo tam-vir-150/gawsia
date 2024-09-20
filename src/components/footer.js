@@ -43,7 +43,7 @@ export default function Home() {
 
             </div>
             <div className="w-full h-full bg-black grid place-content-center">
-            <div className="mapouter"><div className="gmap_canvas"><iframe src="https://maps.google.com/maps?q=nayagaon,%20munshiganj,%20dhaka,%20bangladesh&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" ></iframe></div></div>
+            <div className="mapouter"><div className="gmap_canvas"><iframe src="https://maps.google.com/maps?q=nayagaon,%20munshiganj,%20dhaka,%20bangladesh&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameBorder={0} scrolling="no" ></iframe></div></div>
             </div>
         </div>
         <div className="w-3/5 h-1/6 border-t border-gray-600 flex items-center">

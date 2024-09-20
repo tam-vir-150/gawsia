@@ -1,4 +1,4 @@
-import Image from "next/image";
+"use client"
 import Navbar from "@/components/navbar";
 import Carousel from "@/components/carousel";
 import Section1 from "@/components/card1";
