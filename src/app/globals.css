@@ -7,13 +7,6 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
@@ -24,4 +17,12 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+.shdw{
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+}
+.hbar{
+  height: 3px;
+  background: linear-gradient(to right, transparent, black, transparent);
+  margin: 20px 0;
 }
