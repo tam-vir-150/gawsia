@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <nav
-      className={`w-screen p-4 flex justify-around items-center overflow-hidden fixed bg-[rgba(255,255,255,0.7)] backdrop-blur transition-transform duration-300 ${
+      className={`w-screen p-4 flex justify-around items-center fixed bg-[rgba(255,255,255,0.7)] backdrop-blur transition-transform duration-300 ${
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >

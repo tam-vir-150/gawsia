@@ -25,7 +25,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % points.length);
-    }, 5000); // Change every 5 seconds
+    }, 8000); // Change every 5 seconds
     return () => clearInterval(interval);
   }, []);
 
