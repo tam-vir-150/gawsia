@@ -17,7 +17,7 @@ export default function Home({title, description, bg}) {
             <p className="text-gray-700 text-xl text-justify">{description}</p>
         </div>
         <div className="w-full h-1/5 flex justify-end items-center">
-        <a href="#" className="text-lg text-white bg-gray-800 px-8 py-3 text-center hover:scale-90 hover:bg-gray-700 duration-200"> Learn More</a>
+        <a href="#" className="text-lg text-white bg-gray-800 px-8 py-3 text-center hover:scale-90 hover:bg-gray-700 duration-200">Read More</a>
         </div>
       </div>
     );
