@@ -8,21 +8,21 @@ export default function Home() {
                  <PhoneIcon className='h-10 w-10 bg-white text-black text-lg rounded-full'/> 
                 </div>
                 <br />
-                <p className='text-lg font-semibold'>+880 1234567891</p>
+                <p className='text-lg font-semibold text-white'>+880 1234567891</p>
             </div>
             <div className="w-full h-full bg-[rgba(255,255,255,0.08)] flex flex-col justify-center items-center">
             <div className="p-3 bg-white rounded-full">
                  <EnvelopeIcon className='h-10 w-10 bg-white text-black text-lg rounded-full'/> 
                 </div>
                 <br />
-                <p className='text-lg font-semibold'>email@gmail.com</p>
+                <p className='text-lg font-semibold text-white'>email@gmail.com</p>
             </div>
             <div className="w-full h-full bg-[rgba(255,255,255,0.1)] flex flex-col justify-center items-center">
             <div className="p-3 bg-white rounded-full">
                  <MapPinIcon className='h-10 w-10 bg-white text-black text-lg rounded-full'/> 
                 </div>
                 <br />
-                <p className='text-lg font-semibold'>Office address, Bangladesh</p>
+                <p className='text-lg font-semibold text-white'>Office address, Bangladesh</p>
             </div>
             <div className="w-full h-full bg-black flex flex-col justify-center items-center">
                 <a href='/'><img src='/logo2.png' width={150} height={120}/></a>
