@@ -1,41 +1,70 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Dropdown from "./dropdown";
+
 export default function Home() {
-    const units = ["Circular Knitting Machine"]
-    const about = [
-      "CERTIFICATES",
-      "WHY CHOOSE US"
-    ]
-    const products = ["Single Jersey Machines", "Double Jersey Machines", "Electronic Jacquard Machines"]
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [hidden, setHidden] = useState(false);
+
+  const units = ["Circular Knitting Machine"];
+  const about = ["CERTIFICATES", "WHY CHOOSE US"];
+  const products = [
+    "Single Jersey Machines",
+    "Double Jersey Machines",
+    "Electronic Jacquard Machines",
+  ];
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > 100 && !hidden) {
+      setHidden(true);
+    }
+    else if (currentScrollY <= 100 && hidden) {
+      setHidden(false);
+    }
+    setScrollPosition(currentScrollY);
+  };
+
+  useEffect(() => {
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      // Clean up the scroll event listener
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [hidden]);
 
   return (
-    <nav className="w-screen p-4 flex justify-around items-center">
+    <nav
+      className={`w-screen p-4 flex justify-around items-center overflow-hidden fixed bg-[rgba(255,255,255,0.7)] backdrop-blur transition-transform duration-300 ${
+        hidden ? "-translate-y-full" : "translate-y-0"
+      }`}
+    >
       <Image className="ml-0" src={"/logo.png"} width={120} height={120} />
       <ul className="flex gap-10 text-gray-600 mr-10 uppercase font-bold">
         <li className="hover:text-black hover:underline hover:underline-offset-4 duration-50">
-          <a href="#" >Home</a>
+          <a href="#">Home</a>
         </li>
         <li className="hover:text-black hover:underline hover:underline-offset-4 duration-50">
-        <Dropdown title={"About Us"} items={about}/>
+          <Dropdown title={"About Us"} items={about} />
         </li>
         <li className="hover:text-black hover:underline hover:underline-offset-4 duration-50">
-          <Dropdown title={"Business Unit"} items={units}/>
+          <Dropdown title={"Business Unit"} items={units} />
         </li>
         <li className="hover:text-black hover:underline hover:underline-offset-4 duration-50">
-        <Dropdown title={"Products"} items={products}/>
+          <Dropdown title={"Products"} items={products} />
         </li>
         <li className="hover:text-black hover:underline hover:underline-offset-4 duration-50">
-          <a href="#" >Clients</a>
+          <a href="#">Clients</a>
         </li>
         <li className="hover:text-black hover:underline hover:underline-offset-4 duration-50">
-          <a href="#" >Gallery</a>
+          <a href="#">Gallery</a>
         </li>
         <li className="hover:text-black hover:underline hover:underline-offset-4 duration-50">
-          <a href="#" >Contact Us</a>
+          <a href="#">Contact Us</a>
         </li>
-        
       </ul>
-
     </nav>
   );
 }

@@ -6,11 +6,15 @@ export default function Home({title, description, bg}) {
     }
     return (
       <div className="w-11/12 h-4/5 bg-white rounded-2xl shdw p-6 flex flex-col items-center">
-        <img src={bg} className="w-2/3 aspect-square rounded-xl"/>
-        <div className="w-full h-full p-4 text-justify">
-            <h1 className="text-gray-700 text-2xl font-black">{title}</h1>
+        <div className="w-2/3 aspect-square rounded-xl ">
+          <div className="w-full h-full overflow-hidden">
+          <img src={bg} className="w-full h-full hover:scale-110 duration-200"/>
+          </div>
+        </div>
+        <div className="w-full h-full p-4 ">
+            <h1 className="text-gray-700 text-xl font-black uppercase">{title}</h1>
             <br />
-            <p className="text-gray-700 text-xl">{description}</p>
+            <p className="text-gray-700 text-xl text-justify">{description}</p>
         </div>
         <div className="w-full h-1/5 flex justify-end items-center">
         <a href="#" className="text-lg text-white bg-gray-800 px-8 py-3 text-center hover:scale-90 hover:bg-gray-700 duration-200"> Learn More</a>
