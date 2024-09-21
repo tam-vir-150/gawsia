@@ -3,7 +3,7 @@ import styles from '@/styles/Home.module.css'; // Import custom CSS module
 
 export default function Home() {
   const [index, setIndex] = useState(0);
-  const urls = ["/1.jpeg", "/3.jpg"]; // Ensure these are in the /public folder
+  const urls = ["/1.jpeg", "/3.jpg"]; 
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className={styles.mainContainer}>
       {/* Background Sliding Section */}
-      <div className={styles.sliderContainer}>
+      <div className={styles.sliderContainer} style={{ backgroundImage: `url('${urls[index]}')` }}>
         {urls.map((url, i) => (
           <div
             key={i}
@@ -27,12 +27,12 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Foreground Content Section */}
+      {/* Foreground Content Section with Fade-in Effect */}
       <div className={styles.overlayContent}>
-        <h1 className="text-white text-5xl font-bold text-center uppercase">
+        <h1 className={`${styles.fadeInText} text-white text-5xl font-bold text-center uppercase`}>
           Welcome to
         </h1>
-        <p className="text-white text-7xl font-bold text-center uppercase">
+        <p className={`${styles.fadeInText} ${styles.delay} text-white text-7xl font-bold text-center uppercase`}>
           Gawsia International Trade
         </p>
       </div>
