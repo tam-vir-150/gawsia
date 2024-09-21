@@ -11,7 +11,7 @@ export default function Home({ title, description, bg, reversed }) {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.4 }
     );
 
     if (ref.current) {
@@ -28,8 +28,8 @@ export default function Home({ title, description, bg, reversed }) {
   return (
     <div
       ref={ref}
-      className={`w-full h-2/3 bg-gray-100 grid grid-cols-2 gap-8 items-center p-8 transition-all duration-700 ease-out transform ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      className={`w-full h-2/3 bg-gray-100 grid grid-cols-2 gap-8 place-items-center p-8 transition-all duration-700 ease-out transform ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
       }`}
     >
       {reversed ? (
@@ -40,7 +40,7 @@ export default function Home({ title, description, bg, reversed }) {
               style={{ backgroundImage: `url('${bg}')` }}
             ></div>
           </div>
-          <div className="w-3/4 h-full p-8 flex flex-col justify-center bg-white rounded-lg shadow-md">
+          <div className="w-3/4 h-full p-8 flex flex-col justify-center  bg-white rounded-lg shadow-md">
             <h1 className="text-gray-800 text-5xl font-bold leading-tight text-center uppercase tracking-wider">
               {title}
             </h1>
