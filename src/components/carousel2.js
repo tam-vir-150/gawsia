@@ -37,11 +37,11 @@ export default function Home() {
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundAttachment: "fixed",
-        width: "100%",
+        width: "100vw",
         height: "100vh",
       }}
     >
-      <div className="bg-[rgba(0,0,0,0.8)] p-6 w-full h-full flex flex-col justify-center items-center">
+      <div className="bg-[rgba(0,0,0,0.8)] p-6 w-full h-screen flex flex-col justify-center items-center">
         <h1 className="text-white text-6xl font-extrabold text-center uppercase mb-12">
           Mission & Vision
         </h1>

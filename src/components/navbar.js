@@ -39,7 +39,7 @@ export default function Home() {
     <nav
       className={`w-screen p-4 flex justify-around items-center fixed bg-[rgba(255,255,255,0.7)] backdrop-blur transition-transform duration-300 ${
         hidden ? "-translate-y-full" : "translate-y-0"
-      }`}
+      } z-50`}
     >
       <Image className="ml-0" src={"/logo.png"} width={120} height={120} />
       <ul className="flex gap-10 text-gray-600 mr-10 uppercase font-bold">

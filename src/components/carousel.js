@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import styles from '@/styles/Home.module.css'; // Import custom CSS module
 
 export default function Home() {
   const [index, setIndex] = useState(0);
-  const urls = ["/1.jpeg", "/3.jpg"];  // Ensure these are in the /public folder
+  const urls = ["/1.jpeg", "/3.jpg"]; // Ensure these are in the /public folder
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -12,17 +13,22 @@ export default function Home() {
   }, [urls.length]);
 
   return (
-    <div className="duration-1000"
-      style={{
-        backgroundImage: `url(${urls[index]})`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundAttachment: "fixed",
-        width: "100%",
-        height: "100%",
-      }}
-    >
-      <div className="bg-[rgba(0,0,0,0.6)] w-full h-full flex flex-col justify-center items-center">
+    <div className={styles.mainContainer}>
+      {/* Background Sliding Section */}
+      <div className={styles.sliderContainer}>
+        {urls.map((url, i) => (
+          <div
+            key={i}
+            className={`${styles.slide} ${i === index ? styles.active : ""}`}
+            style={{
+              backgroundImage: `url(${url})`,
+            }}
+          ></div>
+        ))}
+      </div>
+
+      {/* Foreground Content Section */}
+      <div className={styles.overlayContent}>
         <h1 className="text-white text-5xl font-bold text-center uppercase">
           Welcome to
         </h1>
