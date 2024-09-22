@@ -1,28 +1,46 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import styles from '@/styles/Home.module.css'; // Import custom CSS module
 
 export default function Home() {
   const [index, setIndex] = useState(0);
-  const urls = ["/1.jpeg", "/3.jpg", "4.jpg"]; // Ensure these are in the /public folder
-  const hRef = useRef(null);
-  const pRef = useRef(null);
+  const [isFading, setIsFading] = useState(false); // Control fade-out effect for both h1 and p
+  const [hasLoaded, setHasLoaded] = useState(false); // State to track page load
+  const urls = ["/1.jpeg", "/3.jpg", "/4.jpg"]; // Background images
+  const hArr = ["Welcome to", "WE ARE AUTHORISED DEALER OF", "BUEN-KNIT IS A TOP"];
+  const pArr = ["Gawsia International Trade", "BUEN-KNIT IN BANGLADESH", "KNITTING MACHINE MANUFACTURER IN CHINA"];
+
+  const [headerText, setHeaderText] = useState(hArr[0]);
+  const [paragraphText, setParagraphText] = useState(pArr[0]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((index) => (index + 1) % urls.length);
-      hRef.current.classList.remove(styles.fadeInText);
-      pRef.current.classList.remove(styles.fadeInText);
-      hRef.current.classList.add(styles.fadeInText);
-      pRef.current.classList.add(styles.fadeInText);
+    // Trigger fade-in on page load after a short delay
+    setTimeout(() => {
+      setHasLoaded(true); // Start fade-in once the page has loaded
+    }, 1000);
 
-    }, 6000);
+    const interval = setInterval(() => {
+      setIsFading(true); // Start fade-out for both <h1> and <p>
+
+      setTimeout(() => {
+        // Update index and text after fade-out
+        setIndex((prevIndex) => (prevIndex + 1) % urls.length);
+        setHeaderText(hArr[(index + 1) % urls.length]);
+        setParagraphText(pArr[(index + 1) % urls.length]);
+
+        // Fade-in with a delay for the <p> element after the <h1>
+        setTimeout(() => {
+          setIsFading(false); // Start fade-in after the delay
+        }, 1000); // Delay fade-in for <p> to happen after <h1>
+      }, 500); // Duration of the fade-out
+    }, 6000); // Interval for slide and text change
+
     return () => clearInterval(interval);
-  }, [urls.length]);
+  }, [index, urls.length]);
 
   return (
     <div className={styles.mainContainer}>
       {/* Background Sliding Section */}
-      <div className={styles.sliderContainer} style={{backgroundImage: `url(${urls[index]})`}}>
+      <div className={styles.sliderContainer} style={{ backgroundImage: `url(${urls[index]})` }}>
         {urls.map((url, i) => (
           <div
             key={i}
@@ -36,11 +54,11 @@ export default function Home() {
 
       {/* Foreground Content Section */}
       <div className={styles.overlayContent}>
-      <h1 className={`${styles.fadeInText} text-white text-5xl font-bold text-center uppercase`} ref={hRef}>
-          Welcome to
+        <h1 className={`${styles.text} ${hasLoaded && !isFading ? styles.fadeIn : styles.fadeOut} text-white text-5xl font-bold text-center uppercase`}>
+          {headerText}
         </h1>
-        <p className={`${styles.fadeInText} text-white text-7xl font-bold text-center uppercase`} ref={pRef}>
-          Gawsia International Trade
+        <p className={`${styles.text} ${hasLoaded && !isFading ? styles.fadeInDelayed : styles.fadeOut} text-white text-7xl font-bold text-center uppercase`}>
+          {paragraphText}
         </p>
       </div>
     </div>

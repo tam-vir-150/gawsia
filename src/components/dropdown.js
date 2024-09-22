@@ -13,7 +13,7 @@ export default function Dropdown({ title, items }) {
       {/* Dropdown Button */}
       <div className="inline-flex w-full justify-center gap-x-1.5 hover:underline hover:underline-offset-4 uppercase cursor-pointer">
         {title}
-        <ChevronDownIcon aria-hidden="true" className="-mr-1 h-5 w-5 text-gray-400" />
+        <ChevronDownIcon aria-hidden="true" className="-mr-1 h-5 w-5 text-gray-700" />
       </div>
 
       {/* Dropdown Menu */}

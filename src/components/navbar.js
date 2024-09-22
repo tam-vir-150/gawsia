@@ -7,7 +7,7 @@ export default function Home() {
   const [hidden, setHidden] = useState(false);
 
   const units = ["Circular Knitting Machine"];
-  const about = ["CERTIFICATES", "WHY CHOOSE US"];
+  const about = ["ABOUT US" , "VISION & MISSION", "WHY CHOOSE US", "CERTIFICATES"];
   const products = [
     "Single Jersey Machines",
     "Double Jersey Machines",
@@ -47,7 +47,7 @@ export default function Home() {
           <a href="#">Home</a>
         </li>
         <li className="hover:text-black hover:underline hover:underline-offset-4 duration-50">
-          <Dropdown title={"About Us"} items={about} />
+          <Dropdown title={"WHO WE ARE"} items={about} />
         </li>
         <li className="hover:text-black hover:underline hover:underline-offset-4 duration-50">
           <Dropdown title={"Business Unit"} items={units} />
@@ -62,7 +62,7 @@ export default function Home() {
           <a href="#">Gallery</a>
         </li>
         <li className="hover:text-black hover:underline hover:underline-offset-4 duration-50">
-          <a href="#">Contact Us</a>
+        <Dropdown title={"CONNECT"} items={["CONTACT US", "FEEDBACK"]} />
         </li>
       </ul>
     </nav>
