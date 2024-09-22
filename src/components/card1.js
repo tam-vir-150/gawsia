@@ -35,10 +35,13 @@ export default function Home({ title, description, bg, reversed }) {
       {reversed ? (
         <div className="col-span-1 h-full flex justify-center">
           <div className="w-full bg-white rounded-lg shadow-md p-20 gap-20 flex">
-            <div
-              className={`w-1/2 aspect-video bg-center bg-cover rounded-lg shadow-lg`}
-              style={{ backgroundImage: `url('${bg}')` }}
-            ></div>
+          <div
+              className={`w-1/2 aspect-video  rounded-lg shadow-lg overflow-hidden`}
+            >
+              <div style={{ backgroundImage: `url('${bg}')` }} className="w-full h-full bg-center bg-cover hover:scale-110 duration-200">
+
+              </div>
+            </div>
             <div className="w-1/2 pl-8 flex flex-col justify-center">
               <h1 className="text-gray-800 text-5xl font-bold leading-tight text-center uppercase tracking-wider">
                 {title}
@@ -77,9 +80,12 @@ export default function Home({ title, description, bg, reversed }) {
               </div>
             </div>
             <div
-              className={`w-1/2 aspect-video bg-center bg-cover rounded-lg shadow-lg`}
-              style={{ backgroundImage: `url('${bg}')` }}
-            ></div>
+              className={`w-1/2 aspect-video  rounded-lg shadow-lg overflow-hidden`}
+            >
+              <div style={{ backgroundImage: `url('${bg}')` }} className="w-full h-full bg-center bg-cover hover:scale-110 duration-200">
+
+              </div>
+            </div>
           </div>
         </div>
       )}
