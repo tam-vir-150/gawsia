@@ -1,155 +1,180 @@
+// components/Footer.js
+import React, { useState, useEffect } from 'react';
 import {
-  EnvelopeIcon,
-  PhoneIcon,
-  ChevronDownIcon,
-} from '@heroicons/react/20/solid';
-import { 
-  HeartIcon, 
-  UserGroupIcon, 
-  ShieldCheckIcon 
-} from '@heroicons/react/24/outline';
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+  FaLinkedinIn,
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+  FaEnvelope,
+} from 'react-icons/fa'; // Importing the new icons
+import { IoSend } from 'react-icons/io5';
 
 const Footer = () => {
+  // Form state
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [touched, setTouched] = useState({ email: false, message: false });
+  const [errors, setErrors] = useState({});
+  const [isValid, setIsValid] = useState(false);
+
+  // Validate email format
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  // Form validation
+  useEffect(() => {
+    const validationErrors = {};
+    if (touched.email && !validateEmail(email)) {
+      validationErrors.email = 'Please enter a valid email address.';
+    }
+    if (touched.message && message.trim().length === 0) {
+      validationErrors.message = 'Message cannot be empty.';
+    }
+    setErrors(validationErrors);
+    setIsValid(Object.keys(validationErrors).length === 0);
+  }, [email, message, touched]);
+
+  // Form submission handler
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isValid) {
+      // Handle form submission here
+      console.log('Form Submitted:', { email, message });
+      // Clear the form
+      setEmail('');
+      setMessage('');
+      setTouched({ email: false, message: false }); // Reset touched state
+    }
+  };
+
   return (
-    <footer className="bg-gray-800 text-gray-200 py-10">
-      <div className="container mx-auto px-4 md:px-8 lg:px-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Section 1 */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Company</h4>
-            <ul>
-              <li className="mb-2">
-                <a href="#" className="flex items-center hover:text-white">
-                  <UserGroupIcon className="w-5 h-5 mr-2" />
-                  About Us
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="flex items-center hover:text-white">
-                  <HeartIcon className="w-5 h-5 mr-2" />
-                  Services
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="flex items-center hover:text-white">
-                  <ChevronDownIcon className="w-5 h-5 mr-2" />
-                  Contact
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="flex items-center hover:text-white">
-                  <ShieldCheckIcon className="w-5 h-5 mr-2" />
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Section 2 */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Support</h4>
-            <ul>
-              <li className="mb-2">
-                <a href="#" className="flex items-center hover:text-white">
-                  <ChevronDownIcon className="w-5 h-5 mr-2" />
-                  FAQ
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="flex items-center hover:text-white">
-                  <ChevronDownIcon className="w-5 h-5 mr-2" />
-                  Help Center
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="flex items-center hover:text-white">
-                  <ShieldCheckIcon className="w-5 h-5 mr-2" />
-                  Privacy Policy
-                </a>
-              </li>
-              <li className="mb-2">
-                <a href="#" className="flex items-center hover:text-white">
-                  <ChevronDownIcon className="w-5 h-5 mr-2" />
-                  Terms of Service
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Social Icons */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
-            <div className="flex space-x-4 mb-6">
-              <a
-                href="#"
-                className="bg-gray-700 hover:bg-gray-600 p-3 rounded-full text-white"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5"
-                >
-                  <path d="M24 4.5c-.9.4-1.8.6-2.8.7 1-.6 1.7-1.6 2-2.8-.9.5-1.9.9-2.9 1.1-.9-.9-2.1-1.5-3.5-1.5-2.6 0-4.7 2.1-4.7 4.7 0 .4.1.8.2 1.1-3.9-.2-7.3-2.1-9.6-4.9-.4.7-.7 1.6-.7 2.5 0 1.7.9 3.1 2.1 4-.8 0-1.5-.2-2.2-.6v.1c0 2.4 1.7 4.4 3.9 4.8-.4.1-.8.2-1.2.2-.3 0-.6 0-.8-.1.6 1.8 2.3 3.2 4.4 3.2-1.6 1.3-3.7 2.1-5.9 2.1-.4 0-.7 0-1-.1 2.1 1.4 4.6 2.2 7.3 2.2 8.7 0 13.5-7.2 13.5-13.5 0-.2 0-.4 0-.5.9-.6 1.7-1.4 2.3-2.3z" />
-                </svg>
-              </a>
-              <a
-                href="#"
-                className="bg-gray-700 hover:bg-gray-600 p-3 rounded-full text-white"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5"
-                >
-                  <path d="M22.7 0h-21.4c-.7 0-1.3.6-1.3 1.3v21.4c0 .7.6 1.3 1.3 1.3h11.5v-9.3h-3.1v-3.6h3.1v-2.7c0-3.1 1.9-4.8 4.7-4.8 1.3 0 2.4.1 2.7.1v3.1h-1.8c-1.4 0-1.6.7-1.6 1.6v2.7h3.1l-.4 3.6h-2.7v9.3h5.4c.7 0 1.3-.6 1.3-1.3v-21.4c0-.7-.6-1.3-1.3-1.3z" />
-                </svg>
-              </a>
-              <a
-                href="#"
-                className="bg-gray-700 hover:bg-gray-600 p-3 rounded-full text-white"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5"
-                >
-                  <path d="M12 2.2c-5.4 0-9.8 4.4-9.8 9.8 0 4.3 2.8 7.9 6.7 9.2-.1-.8-.1-1.9 0-2.7.1-.7.5-4.6.5-4.6s-.1-.3-.1-.6c0-.6.3-1 .6-1.3-.8-.1-1.7-.3-2.1-1.3-.3-.7-.8-1.1-.8-1.1s-.6 0-.1.4c.4.4.7 1 .7 1 .3.6.7.7.9.7.2 0 .4-.2.5-.3.1-.2.2-.4.1-.7-.1-.3-.2-.8-.4-1.1-.2-.3-.6-.5-.9-.5-1.2-.1-2.1 1.1-2.1 2.3 0 .7.4 1.1.8 1.4.3.3.5.4.3.7-.1.3-.3 1-.3 1.2-.1.2-.2.3-.5.2-1.5-.7-2.5-3.2-2.5-5.3 0-4.4 3.4-7.8 7.8-7.8 4.1 0 7.8 3.3 7.8 7.8 0 4.3-2.7 7.6-6.5 7.6-1.3 0-2.5-.7-2.9-1.4l-.8 3c-.3 1.2-1 2.6-1.5 3.5 1.1.3 2.2.4 3.4.4 5.4 0 9.8-4.4 9.8-9.8 0-5.4-4.4-9.8-9.8-9.8z" />
-                </svg>
-              </a>
-              <a
-                href="#"
-                className="bg-gray-700 hover:bg-gray-600 p-3 rounded-full text-white"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5"
-                >
-                  <path d="M23.5 7.4c-.4-.2-2.3-1.1-4.5-1.1-3.6 0-4.9 2.2-4.9 4.5v2.7h-2.8v4.3h2.8v10.8h4.6v-10.8h3.1s.3-1.9.4-4.3h-3.5v-1.8c0-1 .3-1.8 1.9-1.8h1.6v-3.2z" />
-                </svg>
-              </a>
-            </div>
-
-            {/* Contact Icons */}
-            <div className="flex items-center mb-2">
-              <EnvelopeIcon className="w-5 h-5 text-gray-400 mr-2" />
-              <span className="text-gray-300">contact@company.com</span>
-            </div>
-            <div className="flex items-center">
-              <PhoneIcon className="w-5 h-5 text-gray-400 mr-2" />
-              <span className="text-gray-300">+123 456 7890</span>
-            </div>
+    <footer className="bg-gray-900 text-white py-12 px-6">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        {/* Logo and Social Icons */}
+        <div className='flex flex-col items-start'>
+          <img src="/logo2.png" alt="Logo" width={220} height={260} className="mb-4" />
+          <div className="w-[220px] flex justify-evenly space-x-4">
+            <a href="https://facebook.com" aria-label="Facebook">
+              <FaFacebook size={24} />
+            </a>
+            <a href="https://instagram.com" aria-label="Instagram">
+              <FaInstagram size={24} />
+            </a>
+            <a href="https://twitter.com" aria-label="Twitter">
+              <FaTwitter size={24} />
+            </a>
+            <a href="https://linkedin.com" aria-label="LinkedIn">
+              <FaLinkedinIn size={24} />
+            </a>
+            <a href="https://youtube.com" aria-label="YouTube">
+              <FaYoutube size={24} />
+            </a>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-gray-700 pt-6 text-center text-sm text-gray-400">
-          © 2024 Company Name. All rights reserved.
+        {/* Links */}
+        <div>
+          <h2 className="text-lg font-semibold mb-4 ">Quick Links</h2>
+          <ul className="space-y-2 text-gray-400 ">
+            <li><a href="/about" className="hover:underline hover:text-white underline-offset-2">About Us</a></li>
+            <li><a href="/services" className="hover:underline hover:text-white underline-offset-2">Services</a></li>
+            <li><a href="/contact" className="hover:underline hover:text-white underline-offset-2">Contact Us</a></li>
+          </ul>
         </div>
+
+        {/* Contact Info */}
+        <div>
+          <h2 className="text-lg font-semibold mb-4 ">Contact Us</h2>
+          <div className="flex items-center mb-2 text-gray-400 hover:text-white  underline-offset-2">
+            <FaPhoneAlt size={20} className="mr-2" />
+            <span className='hover:underline text-gray-400 hover:text-white'>+8801995767752,</span> <span className='hover:text-white hover:underline text-gray-400 '> +8801929969797</span>
+          </div>
+          <div className="flex items-center mb-4 text-gray-400 hover:text-white hover:underline underline-offset-2">
+            
+            <p className='ml-20'> </p>
+          </div>
+          
+         <div className='text-gray-400 hover:text-white '>
+         <div className="flex items-center mb-2  underline-offset-2">
+            <FaEnvelope size={20} className="mr-2 text-gray-400 hover:underline underline-offset-2 hover:text-white" />
+            <p>ceo@gawsiainternationaltrade.com</p>
+          </div>
+          <div className="flex items-center mb-4 text-gray-400 hover:underline underline-offset-2 hover:text-white">
+          <FaEnvelope size={20} className="mr-2 text-gray-900" />
+            <p > md@gawsiainternationaltrade.com</p>
+          </div>
+         </div>
+          <div className='text-gray-400 hover:text-white hover:underline underline-offset-2'>
+          <div className="flex items-center mb-2  ">
+            <FaMapMarkerAlt size={20} className="mr-2" />
+            <p>A/10, Bscic Industrial Area, Konabri</p>
+          </div>
+          <div className="flex items-center mb-2">
+            <p className='ml-6'> Gazipur - 1700, Dhaka, 
+            Bangladesh.</p>
+          </div>
+          </div>
+        </div>
+
+        {/* Contact Form */}
+        <div>
+          <h2 className="text-lg font-semibold mb-4">Get in Touch</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <input
+                type="email"
+                placeholder="Your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onBlur={() => setTouched((prev) => ({ ...prev, email: true }))}
+                className={`w-full px-4 py-2 bg-gray-800 border ${
+                  errors.email ? 'border-red-500' : 'border-gray-700'
+                } rounded-md focus:outline-none focus:ring-2 ${
+                  errors.email ? 'focus:ring-red-500' : 'focus:ring-indigo-500'
+                }`}
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              )}
+            </div>
+            <div className="relative mb-4">
+              <textarea
+                placeholder="Your message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                onBlur={() => setTouched((prev) => ({ ...prev, message: true }))}
+                rows="4"
+                className={`w-full px-4 py-6 bg-gray-800 border ${
+                  errors.message ? 'border-red-500' : 'border-gray-700'
+                } rounded-md focus:outline-none focus:ring-2 ${
+                  errors.message ? 'focus:ring-red-500' : 'focus:ring-indigo-500'
+                } pr-16 resize-none pb-10`} // Added pb-10 for bottom padding
+              ></textarea>
+              {errors.message && (
+                <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+              )}
+              <button
+                type="submit"
+                disabled={!isValid}
+                className={`absolute px-4 py-4 rounded-full ${
+                  isValid
+                    ? 'bg-indigo-500 hover:bg-indigo-600 bottom-2 right-2'
+                    : 'bg-gray-500 cursor-not-allowed bottom-8 right-2'
+                } text-white focus:outline-none mb-2`}
+              >
+                <IoSend size={18} />
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div className="text-center mt-8 text-gray-500">
+        &copy; 2024 Your Company. All rights reserved.
       </div>
     </footer>
   );
